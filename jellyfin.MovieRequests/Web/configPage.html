@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Movie Requests settings</title>
+</head>
+<body>
+    <div id="MovieRequestsConfigPage" data-role="page" class="page type-interior pluginConfigurationPage">
+        <div data-role="content">
+            <div class="content-primary">
+                <form id="MovieRequestsConfigForm">
+                    <div class="inputContainer">
+                        <label class="inputLabel inputLabelUnfocused" for="TMDbReadAccessToken">
+                            TMDb API Read Access Token
+                        </label>
+                        <input id="TMDbReadAccessToken" name="TMDbReadAccessToken"
+                               type="password" is="emby-input" autocomplete="new-password">
+                        <div id="TMDbTokenStatus" class="fieldDescription">
+                            Enter a TMDb Read Access Token. Leave blank to keep the current token.
+                            An environment variable can be used as a fallback.
+                        </div>
+                    </div>
+                    <div class="checkboxContainer">
+                        <label class="emby-checkbox-label">
+                            <input id="ClearTMDbReadAccessToken" type="checkbox" is="emby-checkbox">
+                            <span>Clear the saved TMDb token</span>
+                        </label>
+                    </div>
+                    <div>
+                        <button is="emby-button" type="submit"
+                                class="raised button-submit block emby-button">
+                            <span>Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript">
+            const MovieRequestsConfig = {
+                pluginUniqueId: '6f566df7-b7f2-4fac-9034-7ecf6a900001'
+            };
+
+            document.querySelector('#MovieRequestsConfigPage')
+                .addEventListener('pageshow', function () {
+                    Dashboard.showLoadingMsg();
+                    ApiClient.getPluginConfiguration(MovieRequestsConfig.pluginUniqueId)
+                        .then(function (config) {
+                            document.querySelector('#TMDbReadAccessToken').value = '';
+                            document.querySelector('#ClearTMDbReadAccessToken').checked = false;
+                            document.querySelector('#TMDbTokenStatus').textContent =
+                                config.TMDbReadAccessToken
+                                    ? 'A TMDb token is saved. Enter a new value to replace it, or select the checkbox to clear it.'
+                                    : 'No TMDb token is saved. Enter a TMDb Read Access Token. An environment variable can be used as a fallback.';
+                        })
+                        .catch(function () {
+                            Dashboard.alert('Could not load Movie Requests settings.');
+                        })
+                        .finally(function () {
+                            Dashboard.hideLoadingMsg();
+                        });
+                });
+
+            document.querySelector('#MovieRequestsConfigForm')
+                .addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    Dashboard.showLoadingMsg();
+                    ApiClient.getPluginConfiguration(MovieRequestsConfig.pluginUniqueId)
+                        .then(function (config) {
+                            const token = document.querySelector('#TMDbReadAccessToken').value.trim();
+                            if (document.querySelector('#ClearTMDbReadAccessToken').checked) {
+                                config.TMDbReadAccessToken = '';
+                            } else if (token) {
+                                config.TMDbReadAccessToken = token;
+                            }
+
+                            return ApiClient.updatePluginConfiguration(
+                                MovieRequestsConfig.pluginUniqueId,
+                                config);
+                        })
+                        .then(function (result) {
+                            Dashboard.processPluginConfigurationUpdateResult(result);
+                        })
+                        .catch(function () {
+                            Dashboard.alert('Could not save Movie Requests settings.');
+                        })
+                        .finally(function () {
+                            Dashboard.hideLoadingMsg();
+                        });
+                    return false;
+                });
+        </script>
+    </div>
+</body>
+</html>

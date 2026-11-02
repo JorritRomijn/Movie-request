@@ -1,0 +1,38 @@
+@baseUrl = http://localhost:8096
+@jellyfinToken = replace-with-a-valid-jellyfin-access-token
+@requestId = replace-with-a-request-guid
+
+### Get current user capabilities (admin flag)
+GET {{baseUrl}}/MovieRequests/capabilities
+X-Emby-Token: {{jellyfinToken}}
+
+### Search TMDb movies
+GET {{baseUrl}}/MovieRequests/search?query=Arrival
+X-Emby-Token: {{jellyfinToken}}
+
+### List requests
+GET {{baseUrl}}/MovieRequests/list
+
+### Submit a request
+POST {{baseUrl}}/MovieRequests/request
+Content-Type: application/json
+X-Emby-Token: {{jellyfinToken}}
+
+{
+  "tmDbId": 329865
+}
+
+### Vote for a request as the authenticated Jellyfin user
+POST {{baseUrl}}/MovieRequests/vote/{{requestId}}
+X-Emby-Token: {{jellyfinToken}}
+
+### Retrieve a single request (used by the create response Location)
+GET {{baseUrl}}/MovieRequests/{{requestId}}
+
+### Mark a request as completed (administrator only)
+PUT {{baseUrl}}/MovieRequests/request/{{requestId}}/completed
+X-Emby-Token: {{jellyfinToken}}
+
+### Delete a request (administrator only)
+DELETE {{baseUrl}}/MovieRequests/request/{{requestId}}
+X-Emby-Token: {{jellyfinToken}}

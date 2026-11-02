@@ -1,0 +1,10 @@
+C:\Users\jromijn\OneDrive - Batenburg Techniek N.V\Documenten\Server\jellyfin.MovieRequests\obj\Debug\net8.0\Jellyfin.MovieRequest.csproj.AssemblyReference.cache
+C:\Users\jromijn\OneDrive - Batenburg Techniek N.V\Documenten\Server\jellyfin.MovieRequests\obj\Debug\net8.0\Jellyfin.MovieRequest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jromijn\OneDrive - Batenburg Techniek N.V\Documenten\Server\jellyfin.MovieRequests\obj\Debug\net8.0\Jellyfin.MovieRequest.csproj.CoreCompileInputs.cache
+C:\Users\jromijn\OneDrive - Batenburg Techniek N.V\Documenten\Server\jellyfin.MovieRequests\bin\Debug\net8.0\Jellyfin.MovieRequests.deps.json
+C:\Users\jromijn\OneDrive - Batenburg Techniek N.V\Documenten\Server\jellyfin.MovieRequests\bin\Debug\net8.0\Jellyfin.MovieRequests.dll
+C:\Users\jromijn\OneDrive - Batenburg Techniek N.V\Documenten\Server\jellyfin.MovieRequests\bin\Debug\net8.0\Jellyfin.MovieRequests.pdb
+C:\Users\jromijn\OneDrive - Batenburg Techniek N.V\Documenten\Server\jellyfin.MovieRequests\obj\Debug\net8.0\Jellyfin.MovieRequests.dll
+C:\Users\jromijn\OneDrive - Batenburg Techniek N.V\Documenten\Server\jellyfin.MovieRequests\obj\Debug\net8.0\refint\Jellyfin.MovieRequests.dll
+C:\Users\jromijn\OneDrive - Batenburg Techniek N.V\Documenten\Server\jellyfin.MovieRequests\obj\Debug\net8.0\Jellyfin.MovieRequests.pdb
+C:\Users\jromijn\OneDrive - Batenburg Techniek N.V\Documenten\Server\jellyfin.MovieRequests\obj\Debug\net8.0\ref\Jellyfin.MovieRequests.dll

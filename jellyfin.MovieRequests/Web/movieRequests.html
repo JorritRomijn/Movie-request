@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Movie Requests</title>
+    <link rel="stylesheet" href="../MovieRequests/ui.css">
+</head>
+<body>
+    <main class="page">
+        <header class="hero">
+            <div>
+                <p class="eyebrow">JELLYFIN COMMUNITY</p>
+                <h1>Movie requests</h1>
+                <p class="subheading">Find a movie, add it to the list, and vote for what we watch next.</p>
+            </div>
+            <button id="refreshButton" class="button button-secondary" type="button">Refresh list</button>
+        </header>
+
+        <section class="search-panel" aria-labelledby="searchHeading">
+            <h2 id="searchHeading">Request a movie</h2>
+            <label class="sr-only" for="searchInput">Search movie titles</label>
+            <input id="searchInput" type="search" maxlength="200" autocomplete="off"
+                   placeholder="Search movies on TMDb..." aria-describedby="searchMessage">
+            <p id="searchMessage" class="message" role="status" aria-live="polite"></p>
+            <div id="searchResults" class="movie-grid"></div>
+        </section>
+
+        <section class="requests-section" aria-labelledby="requestsHeading">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">COMMUNITY PICKS</p>
+                    <h2 id="requestsHeading">Requested movies</h2>
+                </div>
+                <span id="requestCount" class="count"></span>
+            </div>
+            <p id="listMessage" class="message" role="status" aria-live="polite"></p>
+            <div id="requestList" class="request-list"></div>
+        </section>
+        <footer>Movie information and artwork provided by TMDb.</footer>
+    </main>
+    <script src="../MovieRequests/ui.js" defer></script>
+</body>
+</html>
